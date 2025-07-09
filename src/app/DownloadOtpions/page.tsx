@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -20,7 +19,8 @@ export default function DownloadOptions() {
   const [error, setError] = useState<string>("");
   const [step, setStep] = useState<1 | 2>(1);
 
-  const API_BASE = "http://127.0.0.1:5000";
+  // ✅ Backend URL hardcoded here
+  const API_BASE = "https://instaloader-backend-unxn.onrender.com";
 
   const fetchThumbnail = async () => {
     setLoading(true);
@@ -48,9 +48,7 @@ export default function DownloadOptions() {
       const response = await axios.post(
         `${API_BASE}/download-reel`,
         { url },
-        {
-          responseType: "blob",
-        }
+        { responseType: "blob" }
       );
       const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
