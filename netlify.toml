@@ -1,10 +1,8 @@
 [build]
   command = "npm run build"
-  publish = ".next"
-  functions = "netlify/functions"
+  publish = "out"
 
-[functions]
-  node_bundler = "esbuild"
-
-[[plugins]]
-  package = "@netlify/next"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
